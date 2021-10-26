@@ -2,8 +2,13 @@ package com.example.mappe2s344183s303045;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,9 +16,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button forsteknapp = (Button) findViewById(R.id.bookingKnapp);
+        forsteknapp.setOnClickListener(this::onClick);
+        Button andreknapp = (Button) findViewById(R.id.vennerKnapp);
+        andreknapp.setOnClickListener(this::onClick);
+        Button tredjeknapp = (Button) findViewById(R.id.restaurantKnapp);
+        tredjeknapp.setOnClickListener(this::onClick);
     }
 
-    public void visvenner(View v) {
-        System.out.println("Hei");
+    public void onClick(View v) {
+        if (v.getId() == R.id.bookingKnapp) {
+            Intent intent = new Intent(this, BookingKlasse.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.vennerKnapp) {
+            Intent intent = new Intent(this, VenneKlasse.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.restaurantKnapp) {
+            Intent intent = new Intent(this, RestaurantKlasse.class);
+            startActivity(intent);
+        }
     }
 }

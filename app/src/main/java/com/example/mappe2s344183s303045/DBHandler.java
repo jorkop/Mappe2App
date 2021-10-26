@@ -23,6 +23,10 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
     }
+
+    public void leggTilVenn(Venn venn){
+        //Legge til sql for å lagre til database
+    }
 }
 
 

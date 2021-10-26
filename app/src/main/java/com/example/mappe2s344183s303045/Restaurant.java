@@ -1,9 +1,9 @@
 package com.example.mappe2s344183s303045;
 
-public class Restauranter {
+public class Restaurant {
     Long _ID;
 
-    public Restauranter(Long _ID, String navn, String telefon, String adresse, String kategori) {
+    public Restaurant(Long _ID, String navn, String telefon, String adresse, String kategori) {
         this._ID = _ID;
         this.navn = navn;
         this.telefon = telefon;
@@ -11,14 +11,14 @@ public class Restauranter {
         this.kategori = kategori;
     }
 
-    public Restauranter(String navn, String telefon, String adresse, String kategori) {
+    public Restaurant(String navn, String telefon, String adresse, String kategori) {
         this.navn = navn;
         this.telefon = telefon;
         this.adresse = adresse;
         this.kategori = kategori;
     }
 
-    public Restauranter() {
+    public Restaurant() {
     }
 
     public Long get_ID() {

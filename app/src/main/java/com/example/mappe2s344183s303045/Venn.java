@@ -1,22 +1,22 @@
 package com.example.mappe2s344183s303045;
 
-public class Venner {
+public class Venn {
     Long _ID;
     String navn;
     String telefon;
 
-    public Venner(Long _ID, String navn, String telefon) {
+    public Venn(Long _ID, String navn, String telefon) {
         this._ID = _ID;
         this.navn = navn;
         this.telefon = telefon;
     }
 
-    public Venner(String navn, String telefon) {
+    public Venn(String navn, String telefon) {
         this.navn = navn;
         this.telefon = telefon;
     }
 
-    public Venner() {
+    public Venn() {
     }
 
     public Long get_ID() {
