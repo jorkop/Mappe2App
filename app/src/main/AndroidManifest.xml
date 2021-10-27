@@ -26,6 +26,10 @@
             android:name=".RestaurantKlasse"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity
+            android:name=".BookingKlasse"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

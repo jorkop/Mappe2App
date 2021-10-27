@@ -2,21 +2,24 @@ package com.example.mappe2s344183s303045;
 
 public class Venn {
     Long _ID;
-    String navn;
+    String fornavn;
+    String etternavn;
     String telefon;
 
-    public Venn(Long _ID, String navn, String telefon) {
+    public Venn(Long _ID, String fornavn, String etternavn, String telefon) {
         this._ID = _ID;
-        this.navn = navn;
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
         this.telefon = telefon;
     }
 
-    public Venn(String navn, String telefon) {
-        this.navn = navn;
+    public Venn(String fornavn, String etternavn, String telefon) {
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
         this.telefon = telefon;
     }
 
-    public Venn() {
+    public Venn(){
     }
 
     public Long get_ID() {
@@ -27,12 +30,20 @@ public class Venn {
         this._ID = _ID;
     }
 
-    public String getNavn() {
-        return navn;
+    public String getFornavn() {
+        return fornavn;
     }
 
-    public void setNavn(String navn) {
-        this.navn = navn;
+    public void setFornavn(String fornavn) {
+        this.fornavn = fornavn;
+    }
+
+    public String getEtternavn() {
+        return etternavn;
+    }
+
+    public void setEtternavn(String etternavn) {
+        this.etternavn = etternavn;
     }
 
     public String getTelefon() {

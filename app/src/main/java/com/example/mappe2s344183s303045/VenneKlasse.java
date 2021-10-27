@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -46,15 +47,23 @@ public class VenneKlasse extends AppCompatActivity implements MyDialog.DialogCli
         tlf = (EditText) findViewById(R.id.venntlf);
         id = (EditText) findViewById(R.id.vennID);
         db = new DBHandler(this);
-
     }
 
 
     public void leggtil(View v) {
-        Venn venn = new Venn(fornavn.getText().toString(),
-                etternavn.getText().toString());
-        db.leggTilVenn(venn);
-        Log.d("Legg inn: ", "legger til kontakter");
-    }
+        try {
+            Venn venn = new Venn(fornavn.getText().toString(), etternavn.getText().toString(), tlf.getText().toString());
+            db.leggTilVenn(venn);
+            Log.d("Leggtil: ", "legger til venn i database");
+            fornavn.setText("");
+            etternavn.setText("");
+            tlf.setText("");
+            Toast.makeText(getApplicationContext(), "Lagret!", Toast.LENGTH_SHORT).show();
+//Burde endre så tilbekemelding til brukeren ikke kommer via Toast, fikk kritikk på mappe1.
 
+        } catch (Exception e) {
+            Log.d("Feil i leggtil: ", "Feilmelding: " + e);
+            Toast.makeText(getApplicationContext(), "Kunne ikke lagre. Prøv igjen!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
