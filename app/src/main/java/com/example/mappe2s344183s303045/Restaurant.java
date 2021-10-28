@@ -3,19 +3,19 @@ package com.example.mappe2s344183s303045;
 public class Restaurant {
     Long _ID;
 
-    public Restaurant(Long _ID, String navn, String telefon, String adresse, String kategori) {
+    public Restaurant(Long _ID, String navn, String kategori, String adresse, String telefon) {
         this._ID = _ID;
         this.navn = navn;
-        this.telefon = telefon;
-        this.adresse = adresse;
         this.kategori = kategori;
+        this.adresse = adresse;
+        this.telefon = telefon;
     }
 
-    public Restaurant(String navn, String telefon, String adresse, String kategori) {
+    public Restaurant(String navn, String kategori, String adresse, String telefon) {
         this.navn = navn;
-        this.telefon = telefon;
-        this.adresse = adresse;
         this.kategori = kategori;
+        this.adresse = adresse;
+        this.telefon = telefon;
     }
 
     public Restaurant() {
@@ -37,12 +37,12 @@ public class Restaurant {
         this.navn = navn;
     }
 
-    public String getTelefon() {
-        return telefon;
+    public String getKategori() {
+        return kategori;
     }
 
-    public void setTelefon(String telefon) {
-        this.telefon = telefon;
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
     }
 
     public String getAdresse() {
@@ -53,17 +53,20 @@ public class Restaurant {
         this.adresse = adresse;
     }
 
-    public String getKategori() {
-        return kategori;
+    public String getTelefon() {
+        return telefon;
     }
 
-    public void setKategori(String kategori) {
-        this.kategori = kategori;
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
     }
+
+
+
 
     String navn;
-    String telefon;
-    String adresse;
     String kategori;
+    String adresse;
+    String telefon;
 }
 

@@ -3,11 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/booking.xml" value="0.13489583333333333" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_add_restaurant_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_calendar_today_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_delete_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_edit_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_people_24.xml" value="0.14305555555555555" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_person_add_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_refresh_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_restaurant_menu_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1451388888888889" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_restaurant_24.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/booking.xml" value="0.55" />
         <entry key="app/src/main/res/layout/listview.xml" value="0.11875" />
         <entry key="app/src/main/res/layout/restauranter.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/venner.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/tidsvalg.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/venner.xml" value="0.335" />
       </map>
     </option>
   </component>

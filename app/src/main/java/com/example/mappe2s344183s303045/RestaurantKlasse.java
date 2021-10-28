@@ -34,8 +34,9 @@ public class RestaurantKlasse extends AppCompatActivity implements MyDialog.Dial
                 Toast.makeText(getApplicationContext(), "Skriv inn en ID", Toast.LENGTH_SHORT).show();
             }
             else {
-                db.slettVenn(idforsletting);
-                Toast.makeText(getApplicationContext(), "Venn slettet", Toast.LENGTH_SHORT).show();
+                db.slettRestaurant(idforsletting);
+                Toast.makeText(getApplicationContext(), "Restaurant slettet", Toast.LENGTH_SHORT).show();
+                id.setText("");
             }
 
         } catch(Exception e){
@@ -72,33 +73,19 @@ public class RestaurantKlasse extends AppCompatActivity implements MyDialog.Dial
             Restaurant restaurant = new Restaurant(navn.getText().toString(), kategori.getText().toString(), adresse.getText().toString(), tlf.getText().toString());
             if (restaurant.getNavn().equals("")){
                 Toast.makeText(getApplicationContext(), "Skriv inn navn", Toast.LENGTH_SHORT).show();
-
-                System.out.println("I navn:    " + restaurant);
-
             } else if(restaurant.getKategori().equals("")) {
                 Toast.makeText(getApplicationContext(), "Skriv inn kategori", Toast.LENGTH_SHORT).show();
-
-                System.out.println("I kategori:    " + restaurant);
-
             }else if(restaurant.getAdresse().equals("")) {
                 Toast.makeText(getApplicationContext(), "Skriv inn adresse" + restaurant.getAdresse(), Toast.LENGTH_SHORT).show();
-
-                System.out.println("I adresse:    " + restaurant);
-
             } else if(restaurant.getTelefon().equals("")){
                 Toast.makeText(getApplicationContext(), "Skriv inn telefonnummer", Toast.LENGTH_SHORT).show();
-
-                System.out.println("I tlf:    " + restaurant);
-
             }else {
                 db.leggTilRestaurant(restaurant);
-                Log.d("Leggtil: ", "legger til restaurant i database");
                 navn.setText("");
                 kategori.setText("");
                 adresse.setText("");
                 tlf.setText("");
                 Toast.makeText(getApplicationContext(), "Lagret!", Toast.LENGTH_SHORT).show();
-
             }
         } catch (Exception e) {
             Log.d("Feil i leggtil: ", "Feilmelding: " + e);
@@ -111,12 +98,10 @@ public class RestaurantKlasse extends AppCompatActivity implements MyDialog.Dial
         ArrayList<Restaurant> restauranter = db.finnAlleRestauranter();
         for (Restaurant restaurant : restauranter) {
             String tekst = "";
-            tekst = tekst + "Id: " + restaurant.get_ID() + ",Navn: " +
-                    restaurant.getNavn() + ",Kategori: " + restaurant.getKategori() + ",Adresse: " +
-                    restaurant.getAdresse() +" ,Telefon: " + restaurant.getTelefon();
-            Log.d("Navn: ", tekst );
+            tekst = tekst + "Id: " + restaurant.get_ID() + "\n" + "Navn: " +
+                    restaurant.getNavn() + "\n" + "Kategori: " + restaurant.getKategori() + "\n" + "Adresse: " +
+                    restaurant.getAdresse() + "\n" + "Telefon: " + restaurant.getTelefon();
             utskrift.add(tekst);
-            Log.d("Array: ", ""  +  utskrift);
         }
 
         try {

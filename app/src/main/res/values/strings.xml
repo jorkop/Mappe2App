@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Spis med meg!</string>
+    <string name="velg_dato"><u>Velg dato</u></string>
+    <string name="velg_tid"><u>Velg tid</u></string>
 </resources>

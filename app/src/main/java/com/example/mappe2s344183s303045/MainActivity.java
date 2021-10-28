@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button forsteknapp = (Button) findViewById(R.id.bookingKnapp);
+        LinearLayout forsteknapp = (LinearLayout) findViewById(R.id.bookingKnapp);
         forsteknapp.setOnClickListener(this::onClick);
-        Button andreknapp = (Button) findViewById(R.id.vennerKnapp);
+        LinearLayout andreknapp = (LinearLayout) findViewById(R.id.vennerKnapp);
         andreknapp.setOnClickListener(this::onClick);
-        Button tredjeknapp = (Button) findViewById(R.id.restaurantKnapp);
+        LinearLayout tredjeknapp = (LinearLayout) findViewById(R.id.restaurantKnapp);
         tredjeknapp.setOnClickListener(this::onClick);
     }
 

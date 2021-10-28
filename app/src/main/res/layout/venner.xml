@@ -5,11 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@mipmap/mainbackground">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white">
 
 
         <TextView
@@ -17,23 +24,24 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="184dp"
+            android:layout_marginEnd="144dp"
             android:text="Fornavn:"
-            android:textColor="@color/black"
+            android:textColor="@color/darkblue_custom"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/vennfornavn"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="164dp"
+            android:layout_width="109dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="160dp"
             android:layout_marginTop="24dp"
             android:hint="Fornavn"
+            android:textColor="@color/darkblue_custom"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:textSize="20sp" />
+            tools:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView5"
@@ -43,7 +51,7 @@
             android:layout_marginTop="72dp"
             android:layout_marginBottom="355dp"
             android:text="Etternavn:"
-            android:textColor="@color/black"
+            android:textColor="@color/darkblue_custom"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,16 +59,13 @@
 
         <EditText
             android:id="@+id/vennetternavn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="164dp"
+            android:layout_width="109dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="160dp"
             android:layout_marginTop="72dp"
-            android:layout_marginEnd="56dp"
+            android:textColor="@color/darkblue_custom"
             android:hint="Etternavn"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView5"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,90 +73,167 @@
             android:id="@+id/textView2"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="32dp"
             android:text="Telefonnr:"
-            android:textColor="@color/black"
+            android:textColor="@color/darkblue_custom"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/textView" />
+
 
         <EditText
             android:id="@+id/venntlf"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="164dp"
+            android:layout_width="109dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="160dp"
             android:layout_marginTop="120dp"
-            android:hint="Telefonnr."
+            android:hint="Tlfnr."
+            android:textColor="@color/darkblue_custom"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:textSize="20sp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/vennID"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
             android:layout_marginTop="268dp"
             android:layout_marginBottom="23dp"
+            android:background="@color/white"
             android:hint="Vennens ID"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/button3"
-            app:layout_constraintStart_toStartOf="@+id/slettVenn"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="176dp"
-            android:onClick="leggtil"
-            android:text="Legg til ny venn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <LinearLayout
+            android:id="@+id/button"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="176dp"
+            android:background="@drawable/pattern3"
+            android:onClick="leggtil"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.022"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_person_add_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Legg til ny venn"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/slettVenn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_width="109dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="33dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="43dp"
+            android:background="@drawable/pattern3"
             android:onClick="slettDialog"
-            android:text="Slett en venn"
+            android:orientation="horizontal"
+            android:padding="5dp"
             app:layout_constraintEnd_toStartOf="@+id/button3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vennID" />
+            app:layout_constraintTop_toBottomOf="@+id/vennID">
 
-        <Button
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_delete_24" />
+
+            <TextView
+                android:layout_width="51dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Slett en venn"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/button3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="109dp"
+            android:layout_height="46dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="33dp"
-            android:text="Redigere venn"
+            android:background="@drawable/pattern3"
+            android:orientation="horizontal"
+            android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/slettVenn"
-            app:layout_constraintTop_toBottomOf="@+id/vennID" />
+            app:layout_constraintTop_toBottomOf="@+id/vennID">
 
-        <Button
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_edit_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Redigere venn"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
+            android:layout_width="197dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="28dp"
+            android:background="@drawable/pattern3"
             android:onClick="visalle"
-            android:text="Oppdater venneliste"
+            android:orientation="horizontal"
+            android:padding="5dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button3" />
+            app:layout_constraintTop_toBottomOf="@+id/button3">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_refresh_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Oppdater venneliste"
+                android:textColor="@color/white" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/venneliste"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:textColor="@color/darkblue_custom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -161,4 +243,4 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+</ScrollView>

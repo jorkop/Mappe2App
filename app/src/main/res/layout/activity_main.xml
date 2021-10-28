@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,51 +7,104 @@
     tools:context=".MainActivity"
     android:background="@mipmap/mainbackground">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Spis med meg!"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
 
-    <Button
+
+    <ImageView
+        android:layout_width="169dp"
+        android:layout_height="178dp"
+        android:layout_gravity="center"
+        android:background="@mipmap/logo"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <LinearLayout
         android:id="@+id/bookingKnapp"
         android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:text="Mine bookinger"
+        android:layout_height="60dp"
+        android:background="@drawable/pattern3"
+        android:orientation="horizontal"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
+        app:layout_constraintVertical_bias="0.536">
 
-    <Button
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_baseline_calendar_today_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Mine bookinger"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/vennerKnapp"
         android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:text="Venner"
+        android:layout_height="60dp"
+        android:background="@drawable/pattern3"
+        android:orientation="horizontal"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613" />
+        app:layout_constraintVertical_bias="0.727"
+        tools:ignore="MissingConstraints">
 
-    <Button
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_baseline_people_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Venner"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/restaurantKnapp"
         android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:text="Restauranter"
+        android:layout_height="60dp"
+        android:background="@drawable/pattern3"
+        android:orientation="horizontal"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintVertical_bias="0.909"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_baseline_restaurant_menu_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Restauranter"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

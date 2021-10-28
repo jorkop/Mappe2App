@@ -48,8 +48,4 @@ public class MyDialog extends DialogFragment {
                     { callback.onNoClick();
                     }}).create();
     }
-
-
-
-
 }

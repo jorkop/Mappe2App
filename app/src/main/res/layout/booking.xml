@@ -1,15 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Booking"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/venneID"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="47dp"
+            android:hint="ID"
+            app:layout_constraintBottom_toTopOf="@+id/registrerBooking"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/velgRestaurant" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="27dp"
+            android:text="Velg restaurant:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/velgRestaurant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/velgRestaurant" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="1dp"
+            android:text="Legg til venn:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/venneID"
+            app:layout_constraintEnd_toStartOf="@+id/venneID"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/velgRestaurant"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="41dp"
+            app:layout_constraintBottom_toTopOf="@+id/venneID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/visTid" />
+
+        <Button
+            android:id="@+id/registrerBooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:onClick="leggTilBooking"
+            android:text="Registrer booking"
+            app:layout_constraintBottom_toTopOf="@+id/seBookingListe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/venneID" />
+
+        <Button
+            android:id="@+id/seBookingListe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:onClick="finnAlleBookinger"
+            android:text="Se mine bookinger"
+            app:layout_constraintBottom_toTopOf="@+id/bookingliste"
+            app:layout_constraintStart_toStartOf="@+id/registrerBooking"
+            app:layout_constraintTop_toBottomOf="@+id/registrerBooking" />
+
+        <TextView
+            android:id="@+id/visDato"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="29dp"
+            android:clickable="true"
+            android:text="@string/velg_dato"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/visTid"
+            app:layout_constraintEnd_toStartOf="@+id/visTid"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/visTid"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="69dp"
+            android:clickable="true"
+            android:text="@string/velg_tid"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/velgRestaurant"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/visDato"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="24dp"
+            android:text="Velg tidspunkt:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/visTid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/bookingliste"
+            android:layout_width="0dp"
+            android:layout_height="600dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seBookingListe" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

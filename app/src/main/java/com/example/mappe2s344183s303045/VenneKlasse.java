@@ -85,7 +85,6 @@ public class VenneKlasse extends AppCompatActivity implements MyDialog.DialogCli
                 Toast.makeText(getApplicationContext(), "Skriv inn telefonnummer", Toast.LENGTH_SHORT).show();
             }else {
                 db.leggTilVenn(venn);
-                Log.d("Leggtil: ", "legger til venn i database");
                 fornavn.setText("");
                 etternavn.setText("");
                 tlf.setText("");
@@ -103,12 +102,10 @@ public class VenneKlasse extends AppCompatActivity implements MyDialog.DialogCli
         ArrayList<Venn> venner = db.finnAlleVenner();
         for (Venn venn : venner) {
             String tekst = "";
-            tekst = tekst + "Id: " + venn.get_ID() + ",Navn: " +
-                    venn.getFornavn() + " " + venn.getEtternavn() + " ,Telefon: " +
+            tekst = tekst + "Id: " + venn.get_ID() + "\n" + "Navn: " +
+                    venn.getFornavn() + " " + venn.getEtternavn() + "\n" + "Telefon: " +
                     venn.getTelefon();
-            Log.d("Navn: ", tekst );
             utskrift.add(tekst);
-            Log.d("Array: ", ""  +  utskrift);
         }
 
         try {
