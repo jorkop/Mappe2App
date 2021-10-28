@@ -35,7 +35,7 @@ public class MyDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new AlertDialog.Builder(getActivity()).setTitle("Slett").setPositiveButton("Slett",
+        return new AlertDialog.Builder(getActivity()).setTitle("Er du sikker på at du vil slette?").setPositiveButton("Slett",
                 new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int whichButton){
@@ -48,5 +48,8 @@ public class MyDialog extends DialogFragment {
                     { callback.onNoClick();
                     }}).create();
     }
+
+
+
 
 }

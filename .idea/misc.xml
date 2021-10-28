@@ -5,8 +5,9 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/booking.xml" value="0.13489583333333333" />
-        <entry key="app/src/main/res/layout/restauranter.xml" value="0.13072916666666667" />
-        <entry key="app/src/main/res/layout/venner.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/listview.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/restauranter.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/venner.xml" value="0.165" />
       </map>
     </option>
   </component>
