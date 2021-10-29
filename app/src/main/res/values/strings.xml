@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Spis med meg!</string>
+    <string name="app_name">Spis</string>
     <string name="velg_dato"><u>Velg dato</u></string>
     <string name="velg_tid"><u>Velg tid</u></string>
+    <string name="channel_name">minkanal</string>
+    <string name="channel_description">minbeskrivelse</string>
 </resources>

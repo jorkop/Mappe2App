@@ -13,104 +13,128 @@
 
         <EditText
             android:id="@+id/venneID"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginBottom="47dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="18dp"
             android:hint="ID"
             app:layout_constraintBottom_toTopOf="@+id/registrerBooking"
+            app:layout_constraintEnd_toStartOf="@+id/seBookingListe"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <EditText
+            android:id="@+id/bookingId"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="19dp"
+            android:hint="bookingID"
+            app:layout_constraintBottom_toTopOf="@+id/seBookingListe"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/velgRestaurant" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/innstillinger" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginEnd="27dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="18dp"
             android:text="Velg restaurant:"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/velgRestaurant"
+            app:layout_constraintBottom_toTopOf="@+id/velgRestaurant"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/velgRestaurant" />
+            app:layout_constraintTop_toBottomOf="@+id/visTid" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="1dp"
+            android:layout_marginBottom="15dp"
             android:text="Legg til venn:"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/venneID"
-            app:layout_constraintEnd_toStartOf="@+id/venneID"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/venneID"
+            app:layout_constraintStart_toStartOf="@+id/velgRestaurant"
+            app:layout_constraintTop_toBottomOf="@+id/velgRestaurant" />
 
         <Spinner
             android:id="@+id/velgRestaurant"
-            android:layout_width="120dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginBottom="41dp"
-            app:layout_constraintBottom_toTopOf="@+id/venneID"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/visTid" />
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="19dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
             android:id="@+id/registrerBooking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="19dp"
             android:onClick="leggTilBooking"
             android:text="Registrer booking"
-            app:layout_constraintBottom_toTopOf="@+id/seBookingListe"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/innstillinger"
+            app:layout_constraintStart_toStartOf="@+id/venneID"
             app:layout_constraintTop_toBottomOf="@+id/venneID" />
 
         <Button
             android:id="@+id/seBookingListe"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="28dp"
             android:onClick="finnAlleBookinger"
             android:text="Se mine bookinger"
             app:layout_constraintBottom_toTopOf="@+id/bookingliste"
-            app:layout_constraintStart_toStartOf="@+id/registrerBooking"
-            app:layout_constraintTop_toBottomOf="@+id/registrerBooking" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/slettBooking"
+            app:layout_constraintTop_toBottomOf="@+id/bookingId" />
+
+        <Button
+            android:id="@+id/slettBooking"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="22dp"
+            android:text="Slett booking"
+            android:onClick="slettDialog"
+            app:layout_constraintBaseline_toBaselineOf="@+id/seBookingListe"
+            app:layout_constraintEnd_toStartOf="@+id/seBookingListe"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/visDato"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginEnd="29dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="41dp"
             android:clickable="true"
             android:text="@string/velg_dato"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/visTid"
+            app:layout_constraintBottom_toBottomOf="@+id/visTid"
             app:layout_constraintEnd_toStartOf="@+id/visTid"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/visTid" />
 
         <TextView
             android:id="@+id/visTid"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="69dp"
+            android:layout_marginEnd="43dp"
+            android:layout_marginBottom="36dp"
             android:clickable="true"
             android:text="@string/velg_tid"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/velgRestaurant"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/visDato"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -131,13 +155,24 @@
 
         <ListView
             android:id="@+id/bookingliste"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="600dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seBookingListe" />
+
+        <Button
+            android:id="@+id/innstillinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="28dp"
+            android:text="Innstillinger"
+            android:onClick="innstillinger"
+            app:layout_constraintBottom_toTopOf="@+id/bookingId"
+            app:layout_constraintEnd_toEndOf="@+id/registrerBooking"
+            app:layout_constraintTop_toBottomOf="@+id/registrerBooking" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -2,6 +2,7 @@ package com.example.mappe2s344183s303045;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,17 +17,65 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class BookingKlasse extends AppCompatActivity implements View.OnClickListener{
+public class BookingKlasse extends AppCompatActivity implements View.OnClickListener, MyDialog.DialogClickListener{
     DBHandler db;
     TextView dato, klokkeslett;
     private int mYear, mMonth, mDay, mHour, mMinute;
     Spinner restaurant;
     ListView bookingliste;
     EditText venneid;
+    EditText id;
+
+    @Override
+    public void onYesClick() {
+        String bookingid = (id.getText().toString());
+        Long idforsletting = Long.parseLong(bookingid);
+
+        db.slettBooking(idforsletting);
+        Toast.makeText(getApplicationContext(), "Booking slettet", Toast.LENGTH_SHORT).show();
+        id.setText("");
+
+    }
+
+    @Override
+    public void onNoClick() {
+        return;
+    }
+
+    @Override
+    public void slettDialog(View v) {
+        String bookingid = id.getText().toString();
+        ArrayList<Booking> bookingliste = db.finnAlleBookinger();
+        ArrayList<String> sjekk = new ArrayList<>();
+        for (Booking booking: bookingliste) {
+            String tekst = "";
+            tekst = booking.get_ID().toString();
+            sjekk.add(tekst);
+        }
+
+
+        try {
+            Long idforsletting = Long.parseLong(bookingid);
+
+            if(bookingid.equals("")){
+                Toast.makeText(getApplicationContext(), "Skriv inn en ID", Toast.LENGTH_SHORT).show();
+            }else if (!sjekk.contains(bookingid)){
+                Toast.makeText(getApplicationContext(), "Ingen booking med ID " + bookingid, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                DialogFragment dialog = new MyDialog();
+                dialog.show(getSupportFragmentManager(), "Avslutt");
+            }
+        }catch(Exception e) {
+            Toast.makeText(getApplicationContext(), "Skriv inn gyldig ID", Toast.LENGTH_SHORT).show();
+
+        }
+    }
 
 
     @Override
@@ -36,6 +85,7 @@ public class BookingKlasse extends AppCompatActivity implements View.OnClickList
         db = new DBHandler(this);
         dato =(TextView)findViewById(R.id.visDato);
         klokkeslett =(TextView)findViewById(R.id.visTid);
+        id = (EditText) findViewById(R.id.bookingId);
 
         bookingliste = (ListView) findViewById(R.id.bookingliste);
         venneid = (EditText) findViewById(R.id.venneID);
@@ -60,8 +110,6 @@ public class BookingKlasse extends AppCompatActivity implements View.OnClickList
 
 
     public void leggTilBooking(View v) {
-
-
         try {
             Booking booking = new Booking(venneid.getText().toString(), restaurant.getSelectedItem().toString(), dato.getText().toString(), klokkeslett.getText().toString());
 
@@ -127,6 +175,8 @@ public class BookingKlasse extends AppCompatActivity implements View.OnClickList
     }
 
 
+
+
     // Funksjon OnClick og TimeSet er hentet fra https://www.journaldev.com/9976/android-date-time-picker-dialog
     @Override
     public void onClick(View v) {
@@ -173,6 +223,11 @@ public class BookingKlasse extends AppCompatActivity implements View.OnClickList
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         }
+    }
+
+    public void innstillinger(View v) {
+        Intent intent = new Intent(this, Innstillinger.class);
+        startActivity(intent);
     }
 }
 

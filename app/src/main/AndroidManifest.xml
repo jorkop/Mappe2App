@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mappe2s344183s303045">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,6 +36,19 @@
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="stateHidden">
         </activity>
+        <activity android:name=".Innstillinger"
+            android:parentActivityName=".BookingKlasse">
+            </activity>
+        <service android:name=".MinService">
+        </service>
+        <service android:name=".SettPeriodiskService">
+        </service>
+        <receiver android:name=".MinBroadcastReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="com.example.mappe2s344183s303045" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

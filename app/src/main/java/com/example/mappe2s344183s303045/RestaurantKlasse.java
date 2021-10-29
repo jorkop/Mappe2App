@@ -27,21 +27,12 @@ public class RestaurantKlasse extends AppCompatActivity implements MyDialog.Dial
     @Override
     public void onYesClick() {
         String restaurantid = (id.getText().toString());
-        try {
-            Long idforsletting = Long.parseLong(restaurantid);
+        Long idforsletting = Long.parseLong(restaurantid);
 
-            if(restaurantid.equals("")) {
-                Toast.makeText(getApplicationContext(), "Skriv inn en ID", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                db.slettRestaurant(idforsletting);
-                Toast.makeText(getApplicationContext(), "Restaurant slettet", Toast.LENGTH_SHORT).show();
-                id.setText("");
-            }
+        db.slettRestaurant(idforsletting);
+        Toast.makeText(getApplicationContext(), "Restaurant slettet", Toast.LENGTH_SHORT).show();
+        id.setText("");
 
-        } catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Skriv inn gyldig ID", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -51,8 +42,32 @@ public class RestaurantKlasse extends AppCompatActivity implements MyDialog.Dial
 
     @Override
     public void slettDialog(View v) {
-        DialogFragment dialog = new MyDialog();
-        dialog.show(getSupportFragmentManager(),"Avslutt");
+        String resid = id.getText().toString();
+        ArrayList<Restaurant> resliste = db.finnAlleRestauranter();
+        ArrayList<String> sjekk = new ArrayList<>();
+        for (Restaurant res: resliste) {
+            String tekst = "";
+            tekst = res.get_ID().toString();
+            sjekk.add(tekst);
+        }
+
+
+        try {
+            Long idforsletting = Long.parseLong(resid);
+
+            if(resid.equals("")){
+                Toast.makeText(getApplicationContext(), "Skriv inn en ID", Toast.LENGTH_SHORT).show();
+            }else if (!sjekk.contains(resid)){
+                Toast.makeText(getApplicationContext(), "Ingen restaurant med ID " + resid, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                DialogFragment dialog = new MyDialog();
+                dialog.show(getSupportFragmentManager(), "Avslutt");
+            }
+        }catch(Exception e) {
+            Toast.makeText(getApplicationContext(), "Skriv inn gyldig ID", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override

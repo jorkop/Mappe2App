@@ -46,17 +46,14 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String LAG_TABELL = "CREATE TABLE " + TABLE_VENNER + "(" + KEY_ID +
                 " INTEGER PRIMARY KEY," + KEY_FIRSTNAME + " TEXT," + KEY_LASTNAME + " TEXT," + KEY_PH_NO + " TEXT" + ")";
-        Log.d("SQL", LAG_TABELL);
         db.execSQL(LAG_TABELL);
 
         String LAG_TABELL2 ="CREATE TABLE " + TABLE_RESTAURANTER + "(" + KEY_RES_ID + " INTEGER PRIMARY KEY," + KEY_NAME +
                 " TEXT," + KEY_CAT + " TEXT," + KEY_ADDRESS + " TEXT," + KEY_PHONE + " TEXT" + ")";
-        Log.d("SQL", LAG_TABELL2);
         db.execSQL(LAG_TABELL2);
 
         String LAG_TABELL3 = "CREATE TABLE " + TABLE_BOOKINGER + "(" + KEY_BOOKING_ID + " INTEGER PRIMARY KEY,"+ KEY_FRIEND_ID +
                 " TEXT," + KEY_RESTAURANT_ID + " TEXT," + KEY_DATE + " TEXT," + KEY_TIME + " TEXT" + ")";
-        Log.d("SQL", LAG_TABELL3);
         db.execSQL(LAG_TABELL3);
     }
 

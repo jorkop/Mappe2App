@@ -14,7 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VenneKlasse extends AppCompatActivity implements MyDialog.DialogClickListener{
+public class VenneKlasse extends AppCompatActivity implements MyDialog.DialogClickListener {
     EditText fornavn;
     EditText etternavn;
     EditText tlf;
@@ -24,29 +24,23 @@ public class VenneKlasse extends AppCompatActivity implements MyDialog.DialogCli
 
     @Override
     public void onYesClick() {
-        String venneid = (id.getText().toString());
-        try {
-            Long idforsletting = Long.parseLong(venneid);
+        String venneid = id.getText().toString();
+        Long idforsletting = Long.parseLong(venneid);
 
-        if(venneid.equals("")) {
-            Toast.makeText(getApplicationContext(), "Skriv inn en ID", Toast.LENGTH_SHORT).show();
-        }
-        else {
-                db.slettVenn(idforsletting);
-                Toast.makeText(getApplicationContext(), "Venn slettet", Toast.LENGTH_SHORT).show();
-        }
+        db.slettVenn(idforsletting);
+        Toast.makeText(getApplicationContext(), "Venn slettet", Toast.LENGTH_SHORT).show();
+        id.setText("");
 
-        } catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Skriv inn gyldig ID", Toast.LENGTH_SHORT).show();
-        }
+    }
+
 
         /*
         Poenget er at man skal skrive inn en id før man trykker på slett og få opp
         "Vil du slette Arne Hansen med id x?". Da må overskriften endres inne i MyDialog setTitle.
 
          Burde også få opp bekreftelse på sletting
-         */
-    }
+        */
+
 
     @Override
     public void onNoClick() {
@@ -55,9 +49,32 @@ public class VenneKlasse extends AppCompatActivity implements MyDialog.DialogCli
 
     @Override
     public void slettDialog(View v) {
-        DialogFragment dialog = new MyDialog();
-        dialog.show(getSupportFragmentManager(),"Avslutt");
+        String venneid = (id.getText().toString());
+        ArrayList<Venn> venneliste = db.finnAlleVenner();
+        ArrayList<String> sjekk = new ArrayList<>();
+        for (Venn venn: venneliste) {
+            String tekst = "";
+            tekst = venn.get_ID().toString();
+            sjekk.add(tekst);
+        }
 
+
+        try {
+            Long idforsletting = Long.parseLong(venneid);
+
+            if(venneid.equals("")){
+                Toast.makeText(getApplicationContext(), "Skriv inn en ID", Toast.LENGTH_SHORT).show();
+            }else if (!sjekk.contains(venneid)){
+                Toast.makeText(getApplicationContext(), "Ingen venner med ID " + venneid, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                DialogFragment dialog = new MyDialog();
+                dialog.show(getSupportFragmentManager(), "Avslutt");
+            }
+        }catch(Exception e) {
+            Toast.makeText(getApplicationContext(), "Skriv inn gyldig ID", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override
