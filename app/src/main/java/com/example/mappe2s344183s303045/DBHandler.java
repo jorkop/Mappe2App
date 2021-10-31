@@ -7,26 +7,29 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DBHandler extends SQLiteOpenHelper {
-//Tabell for venner
+    //Tabell for venner
     static String TABLE_VENNER = "Venner";
     static String KEY_ID = "_ID";
     static String KEY_FIRSTNAME = "Fornavn";
     static String KEY_LASTNAME = "Etternavn";
     static String KEY_PH_NO = "Telefon";
 
-//Tabell for restauranter
+    //Tabell for restauranter
     static String TABLE_RESTAURANTER = "Restauranter";
     static String KEY_RES_ID = "_ID";
     static String KEY_NAME = "Navn";
     static String KEY_CAT = "Kategori";
     static String KEY_ADDRESS = "Adresse";
-    static String KEY_PHONE = "Telefon";
+    static String KEY_PHONE = "Tlf";
 
-//Tabell for bookinger
+    //Tabell for bookinger
     static String TABLE_BOOKINGER = "Bookinger";
     static String KEY_BOOKING_ID = "_ID";
     static String KEY_FRIEND_ID = "VenneID";
@@ -48,11 +51,11 @@ public class DBHandler extends SQLiteOpenHelper {
                 " INTEGER PRIMARY KEY," + KEY_FIRSTNAME + " TEXT," + KEY_LASTNAME + " TEXT," + KEY_PH_NO + " TEXT" + ")";
         db.execSQL(LAG_TABELL);
 
-        String LAG_TABELL2 ="CREATE TABLE " + TABLE_RESTAURANTER + "(" + KEY_RES_ID + " INTEGER PRIMARY KEY," + KEY_NAME +
+        String LAG_TABELL2 = "CREATE TABLE " + TABLE_RESTAURANTER + "(" + KEY_RES_ID + " INTEGER PRIMARY KEY," + KEY_NAME +
                 " TEXT," + KEY_CAT + " TEXT," + KEY_ADDRESS + " TEXT," + KEY_PHONE + " TEXT" + ")";
         db.execSQL(LAG_TABELL2);
 
-        String LAG_TABELL3 = "CREATE TABLE " + TABLE_BOOKINGER + "(" + KEY_BOOKING_ID + " INTEGER PRIMARY KEY,"+ KEY_FRIEND_ID +
+        String LAG_TABELL3 = "CREATE TABLE " + TABLE_BOOKINGER + "(" + KEY_BOOKING_ID + " INTEGER PRIMARY KEY," + KEY_FRIEND_ID +
                 " TEXT," + KEY_RESTAURANT_ID + " TEXT," + KEY_DATE + " TEXT," + KEY_TIME + " TEXT" + ")";
         db.execSQL(LAG_TABELL3);
     }
@@ -62,7 +65,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VENNER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESTAURANTER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOKINGER);
-        onCreate(db);
+        this.onCreate(db);
     }
 
     /*
@@ -71,7 +74,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
      */
 
-    public void leggTilVenn(Venn venn){
+    public void leggTilVenn(Venn venn) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_FIRSTNAME, venn.getFornavn());
@@ -87,7 +90,9 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
-            do {Venn venn = new Venn(); venn.set_ID(cursor.getLong(0));
+            do {
+                Venn venn = new Venn();
+                venn.set_ID(cursor.getLong(0));
                 venn.setFornavn(cursor.getString(1));
                 venn.setEtternavn(cursor.getString(2));
                 venn.setTelefon(cursor.getString(3));
@@ -99,10 +104,22 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return venneListe;
     }
+
     public void slettVenn(Long inn_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_VENNER, KEY_ID + " =? ", new String[]{Long.toString(inn_id)});
         db.close();
+    }
+
+    public int oppdaterVenn(Venn venn) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_FIRSTNAME, venn.getFornavn());
+        values.put(KEY_LASTNAME, venn.getEtternavn());
+        values.put(KEY_PH_NO, venn.getTelefon());
+        int endret = db.update(TABLE_VENNER, values, KEY_ID + "= ?", new String[]{String.valueOf(venn.get_ID())});
+        db.close();
+        return endret;
     }
 
 
@@ -113,7 +130,7 @@ public class DBHandler extends SQLiteOpenHelper {
      */
 
 
-    public void leggTilRestaurant (Restaurant restaurant) {
+    public void leggTilRestaurant(Restaurant restaurant) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, restaurant.getNavn());
@@ -130,7 +147,9 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
-            do {Restaurant restaurant = new Restaurant(); restaurant.set_ID(cursor.getLong(0));
+            do {
+                Restaurant restaurant = new Restaurant();
+                restaurant.set_ID(cursor.getLong(0));
                 restaurant.setNavn(cursor.getString(1));
                 restaurant.setKategori(cursor.getString(2));
                 restaurant.setAdresse(cursor.getString(3));
@@ -150,6 +169,18 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public int oppdaterRestaurant(Restaurant restaurant) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, restaurant.getNavn());
+        values.put(KEY_CAT, restaurant.getKategori());
+        values.put(KEY_ADDRESS, restaurant.getAdresse());
+        values.put(KEY_PHONE, restaurant.getTelefon());
+        int endret = db.update(TABLE_RESTAURANTER, values, KEY_RES_ID + "= ?", new String[]{String.valueOf(restaurant.get_ID())});
+        db.close();
+        return endret;
+    }
+
 /*
 
     <------------------FUNKSJONER FOR BOOKINGER--------------------->
@@ -157,7 +188,7 @@ public class DBHandler extends SQLiteOpenHelper {
      */
 
 
-    public void leggTilBooking (Booking booking) {
+    public void leggTilBooking(Booking booking) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_FRIEND_ID, booking.getVenneid());
@@ -174,7 +205,9 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
-            do {Booking booking = new Booking(); booking.set_ID(cursor.getLong(0));
+            do {
+                Booking booking = new Booking();
+                booking.set_ID(cursor.getLong(0));
                 booking.setVenneid(cursor.getString(1));
                 booking.setRestaurantid(cursor.getString(2));
                 booking.setDato(cursor.getString(3));
@@ -194,7 +227,44 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    //FÅR IKKE SMS TIL Å FUNKE
+    public String smsTilDagensBookinger() {
+        String s = "";
+        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        System.out.println("Dato for sms: " + currentDate);
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selectQuery = "SELECT " + KEY_PH_NO + " FROM " + TABLE_VENNER + ", " + TABLE_BOOKINGER + " WHERE " + KEY_DATE + " = " + currentDate + " AND " + TABLE_VENNER + "." + KEY_ID + " = " + TABLE_BOOKINGER + "." + KEY_FRIEND_ID + ";";
+        Cursor cursor = db.rawQuery(selectQuery, null);
 
+        if (cursor != null) {
+            System.out.println("INNE I IF");
+            cursor.moveToFirst();
+            int c = cursor.getColumnIndex("Telefon");
+            s = cursor.getString(c);
+            System.out.println("TELEFON " + s);
+            System.out.println("Index " + c);
+
+            cursor.moveToNext();
+            cursor.close();
+            db.close();
+            Log.d("Count", cursor.getCount() + "");
+        }
+        return s;
+    }
+    public int oppdaterBooking(Booking booking) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_FRIEND_ID, booking.getVenneid());
+        values.put(KEY_RESTAURANT_ID, booking.getRestaurantid());
+        values.put(KEY_DATE, booking.getDato());
+        values.put(KEY_TIME, booking.getKlokkeslett());
+        int endret = db.update(TABLE_BOOKINGER, values, KEY_ID + "= ?", new String[]{String.valueOf(booking.get_ID())});
+        db.close();
+        return endret;
+    }
 }
+
+
+
 
 

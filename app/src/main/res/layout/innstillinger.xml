@@ -5,14 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Switch
-        android:id="@+id/switch1"
+    <CheckBox
+        android:id="@+id/smsPref"
         android:layout_width="250dp"
         android:layout_height="80dp"
-        android:layout_marginTop="122dp"
+        android:layout_marginTop="120dp"
+        android:onClick="lagrePref"
         android:text="SMS påminnelse"
         android:textSize="25sp"
+        android:defaultValue="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

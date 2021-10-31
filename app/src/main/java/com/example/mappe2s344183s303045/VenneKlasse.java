@@ -139,5 +139,42 @@ public class VenneKlasse extends AppCompatActivity implements MyDialog.DialogCli
         }
     }
 
+    public void oppdaterVenn(View v) {
+        Venn venn = new Venn(fornavn.getText().toString(), etternavn.getText().toString(), tlf.getText().toString());
 
+        ArrayList<String> utskrift = new ArrayList<>();
+        ArrayList<Venn> venner = db.finnAlleVenner();
+        for (Venn venn1 : venner) {
+            String tekst = "";
+            tekst = venn1.get_ID().toString();
+            utskrift.add(tekst);
+        }
+
+        String s = id.getText().toString();
+        if (venn.getFornavn().equals("")) {
+            Toast.makeText(getApplicationContext(), "Skriv inn fornavn", Toast.LENGTH_SHORT).show();
+        } else if (venn.getEtternavn().equals("")) {
+            Toast.makeText(getApplicationContext(), "Skriv inn etternavn!", Toast.LENGTH_SHORT).show();
+        } else if (venn.getTelefon().equals("")) {
+            Toast.makeText(getApplicationContext(), "Skriv inn telefon", Toast.LENGTH_SHORT).show();
+        } else if (s.equals("")) {
+            Toast.makeText(getApplicationContext(), "Skriv inn venne-ID!", Toast.LENGTH_SHORT).show();
+        } else if (!utskrift.contains(s)) {
+            Toast.makeText(getApplicationContext(), "Venne-ID eksisterer ikke!", Toast.LENGTH_SHORT).show();
+        } else {
+
+            venn.setFornavn(fornavn.getText().toString());
+            venn.setEtternavn(etternavn.getText().toString());
+            venn.setTelefon(tlf.getText().toString());
+            venn.set_ID(Long.parseLong(id.getText().toString()));
+            db.oppdaterVenn(venn);
+
+            Toast.makeText(getApplicationContext(), "Venn endret!", Toast.LENGTH_SHORT).show();
+            fornavn.setText("");
+            id.setText("");
+            etternavn.setText("");
+            tlf.setText("");
+        }
+
+    }
 }

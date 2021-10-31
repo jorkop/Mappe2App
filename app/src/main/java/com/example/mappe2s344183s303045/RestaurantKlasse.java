@@ -133,4 +133,46 @@ public class RestaurantKlasse extends AppCompatActivity implements MyDialog.Dial
         }
     }
 
+    public void oppdaterRestaurant(View v) {
+        Restaurant restaurant = new Restaurant(navn.getText().toString(), kategori.getText().toString(), adresse.getText().toString(), tlf.getText().toString());
+
+        ArrayList<String> utskrift = new ArrayList<>();
+        ArrayList<Restaurant> restauranter = db.finnAlleRestauranter();
+        for (Restaurant restaurant1 : restauranter) {
+            String tekst = "";
+            tekst = restaurant1.get_ID().toString();
+            utskrift.add(tekst);
+        }
+
+        String s = id.getText().toString();
+        if (restaurant.getNavn().equals("")) {
+            Toast.makeText(getApplicationContext(), "Skriv inn navn", Toast.LENGTH_SHORT).show();
+        } else if(restaurant.getKategori().equals("")){
+            Toast.makeText(getApplicationContext(), "Skriv inn kategori!", Toast.LENGTH_SHORT).show();
+        }else if(restaurant.getAdresse().equals("")){
+            Toast.makeText(getApplicationContext(), "Skriv inn adresse", Toast.LENGTH_SHORT).show();
+        }else if(restaurant.getTelefon().equals("")){
+            Toast.makeText(getApplicationContext(), "Skriv inn telefon", Toast.LENGTH_SHORT).show();
+        } else if (s.equals("")){
+            Toast.makeText(getApplicationContext(), "Skriv inn booking-ID!", Toast.LENGTH_SHORT).show();
+        } else if (!utskrift.contains(s)){
+            Toast.makeText(getApplicationContext(), "Booking-ID eksisterer ikke!", Toast.LENGTH_SHORT).show();
+        }else {
+
+            restaurant.setNavn(navn.getText().toString());
+            restaurant.setKategori(kategori.getText().toString());
+            restaurant.setAdresse(adresse.getText().toString());
+            restaurant.setTelefon(tlf.getText().toString());
+            restaurant.set_ID(Long.parseLong(id.getText().toString()));
+            db.oppdaterRestaurant(restaurant);
+
+            Toast.makeText(getApplicationContext(), "Restaurant endret!", Toast.LENGTH_SHORT).show();
+            navn.setText("");
+            id.setText("");
+            adresse.setText("");
+            kategori.setText("");
+            tlf.setText("");
+        }
+    }
+
 }

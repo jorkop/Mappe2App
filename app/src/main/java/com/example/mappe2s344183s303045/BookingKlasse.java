@@ -229,6 +229,69 @@ public class BookingKlasse extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent(this, Innstillinger.class);
         startActivity(intent);
     }
+
+
+    public void oppdater(View v) {
+        Booking booking = new Booking(venneid.getText().toString(), restaurant.getSelectedItem().toString(), dato.getText().toString(), klokkeslett.getText().toString());
+
+        ArrayList<String> utskrift1 = new ArrayList<>();
+        ArrayList<Booking> bookinger2 = db.finnAlleBookinger();
+        for (Booking booking1 : bookinger2) {
+            String tekst = "";
+            tekst = booking1.get_ID().toString();
+            utskrift1.add(tekst);
+        }
+
+        ArrayList<Venn> venneliste = db.finnAlleVenner();
+        ArrayList<String> sjekk = new ArrayList<>();
+        for (Venn venn: venneliste) {
+            String tekst = "";
+            tekst = venn.get_ID().toString();
+            sjekk.add(tekst);
+        }
+        String s = id.getText().toString();
+        if (booking.getRestaurantid().equals("Velg restaurant")) {
+            Toast.makeText(getApplicationContext(), "Velg restaurant", Toast.LENGTH_SHORT).show();
+        } else if(booking.getDato().equals("Velg dato")){
+            Toast.makeText(getApplicationContext(), "Velg dato", Toast.LENGTH_SHORT).show();
+        }else if(booking.getKlokkeslett().equals("Velg tid")){
+            Toast.makeText(getApplicationContext(), "Velg klokkeslett", Toast.LENGTH_SHORT).show();
+        } else if(booking.getVenneid().equals("")){
+            Toast.makeText(getApplicationContext(), "Velg en venn!", Toast.LENGTH_SHORT).show();
+        } else if (!sjekk.contains(booking.getVenneid())){
+            Toast.makeText(getApplicationContext(), "Venn finnes ikke!", Toast.LENGTH_SHORT).show();
+        } else if (s.equals("")){
+            Toast.makeText(getApplicationContext(), "Skriv inn booking-ID!", Toast.LENGTH_SHORT).show();
+        } else if (!utskrift1.contains(s)){
+            Toast.makeText(getApplicationContext(), "Booking-ID eksisterer ikke!", Toast.LENGTH_SHORT).show();
+        }else {
+
+            ArrayList<String> liste = new ArrayList<String>();
+            ArrayList<Restaurant> restaurantliste = db.finnAlleRestauranter();
+            for (Restaurant restaurant : restaurantliste) {
+                String tekst = "";
+                tekst = restaurant.getNavn();
+                liste.add(tekst);
+            }
+
+            String one = restaurant.getSelectedItem().toString();
+            if (restaurant.getSelectedItemPosition() == liste.indexOf(one) && one.equals(restaurant.getSelectedItem().toString())) {
+                booking.setRestaurantid(restaurant.getSelectedItem().toString());
+            }
+            booking.setVenneid(venneid.getText().toString());
+            booking.setDato(dato.getText().toString());
+            booking.setKlokkeslett(klokkeslett.getText().toString());
+            booking.set_ID(Long.parseLong(id.getText().toString()));
+            db.oppdaterBooking(booking);
+
+            Toast.makeText(getApplicationContext(), "Booking endret!", Toast.LENGTH_SHORT).show();
+            venneid.setText("");
+            restaurant.setSelection(0);
+            dato.setText("Velg dato");
+            klokkeslett.setText("Velg tid");
+            id.setText("");
+        }
+    }
 }
 
 

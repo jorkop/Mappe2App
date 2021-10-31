@@ -5,11 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@mipmap/mainbackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/textView"
@@ -19,7 +25,7 @@
             android:layout_marginTop="28dp"
             android:layout_marginEnd="13dp"
             android:text="Restaurant-navn:"
-            android:textColor="@color/black"
+            android:textColor="@color/darkblue_custom"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/restaurantnavn"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +39,7 @@
             android:layout_marginEnd="31dp"
             android:layout_marginBottom="14dp"
             android:hint="Navn"
+            android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/restaurantkategori"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView"
@@ -46,7 +53,7 @@
             android:layout_marginEnd="6dp"
             android:layout_marginBottom="8dp"
             android:text="Skriv inn kategori:"
-            android:textColor="@color/black"
+            android:textColor="@color/darkblue_custom"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/restaurantkategori"
             app:layout_constraintEnd_toStartOf="@+id/restaurantkategori"
@@ -59,8 +66,8 @@
             android:layout_marginEnd="31dp"
             android:layout_marginBottom="16dp"
             android:hint="Kategori"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textColor="@color/darkblue_custom"
+            android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/restaurantadresse"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -74,7 +81,7 @@
             android:layout_marginEnd="62dp"
             android:layout_marginBottom="19dp"
             android:text="Skriv inn tlf:"
-            android:textColor="@color/black"
+            android:textColor="@color/darkblue_custom"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toStartOf="@+id/restauranttlf"
@@ -89,6 +96,7 @@
             android:layout_marginEnd="29dp"
             android:layout_marginBottom="8dp"
             android:hint="Telefonnr."
+            android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView8" />
@@ -100,7 +108,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="10dp"
             android:text="Skriv inn adresse:"
-            android:textColor="@color/black"
+            android:textColor="@color/darkblue_custom"
             android:textSize="20sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/restaurantadresse"
             app:layout_constraintEnd_toStartOf="@+id/restaurantadresse"
@@ -113,22 +121,45 @@
             android:layout_marginEnd="29dp"
             android:layout_marginBottom="19dp"
             android:hint="Adresse"
+            android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/textView8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/restaurantkategori" />
 
-        <Button
+
+        <LinearLayout
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="230dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="11dp"
+            android:background="@drawable/pattern3"
             android:onClick="leggtil"
-            android:text="Legg til ny restaurant"
+            android:orientation="horizontal"
+            android:padding="16dp"
             app:layout_constraintBottom_toTopOf="@+id/restaurantID"
-            app:layout_constraintEnd_toEndOf="@+id/restauranttlf"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintVertical_bias="0.022">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_add_restaurant_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Legg til ny restaurant"
+                android:textColor="@color/white" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/restaurantID"
@@ -141,51 +172,118 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button" />
 
-        <Button
+
+        <LinearLayout
             android:id="@+id/redigereRestaurant"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginBottom="28dp"
-            android:text="Redigere restaurant"
-            app:layout_constraintBottom_toTopOf="@+id/visrestauranter"
-            app:layout_constraintEnd_toStartOf="@+id/slettRestaurant"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantID" />
-
-        <Button
-            android:id="@+id/slettRestaurant"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:onClick="slettDialog"
-            android:text="Slett restaurant"
-            app:layout_constraintBaseline_toBaselineOf="@+id/redigereRestaurant"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="399dp"
+            android:layout_marginEnd="145dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/pattern3"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:onClick="oppdaterRestaurant"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/redigereRestaurant" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
 
-        <Button
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_edit_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Rediger restaurant"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/slettRestaurant"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="399dp"
+            android:background="@drawable/pattern3"
+            android:onClick="slettDialog"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_delete_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Slett restaurant"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/visrestauranter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="29dp"
-            android:layout_marginBottom="10dp"
-            android:text="Oppdater restaurantliste"
+            android:layout_width="230dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="165dp"
+            android:background="@drawable/pattern3"
             android:onClick="visalle"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="60dp"
+            app:layout_constraintVertical_bias="0.022"
+            app:layout_constraintTop_toBottomOf="@id/button"
             app:layout_constraintBottom_toTopOf="@+id/restaurantliste"
-            app:layout_constraintEnd_toEndOf="@+id/restaurantliste"
-            app:layout_constraintTop_toBottomOf="@+id/redigereRestaurant" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_refresh_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Oppdater restaurantliste"
+                android:textColor="@color/white" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/restaurantliste"
             android:layout_width="match_parent"
             android:layout_height="600dp"
+            android:layout_marginTop="580dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/visrestauranter">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.497"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            app:layout_constraintTop_toBottomOf="@id/visrestauranter">
         </ListView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

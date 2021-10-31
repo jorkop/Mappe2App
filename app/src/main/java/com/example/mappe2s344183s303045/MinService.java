@@ -50,6 +50,8 @@ public IBinder onBind(Intent arg0) {
             notifikasjon.flags |= Notification.FLAG_AUTO_CANCEL;
             notificationManager.notify(0, notifikasjon);
 
+            
+
         }
         return super.onStartCommand(intent, flags, startId);
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Spis</string>
+    <string name="app_name">SPIS</string>
     <string name="velg_dato"><u>Velg dato</u></string>
     <string name="velg_tid"><u>Velg tid</u></string>
     <string name="channel_name">minkanal</string>
